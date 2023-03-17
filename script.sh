@@ -19,7 +19,6 @@ done
 
 echo 'We hope you have a magical day, and a great big beautiful tomorrow!' >> weather.txt
 
-#sudo gtts-cli --file weather.txt --tld com -l en -o weather.mp3
 aws polly synthesize-speech --engine neural --output-format mp3 --voice-id Olivia --text file://weather.txt weather.mp3
 
 # Park hours
@@ -27,7 +26,6 @@ curl -s https://wdwnt-now-api.herokuapp.com/api/parks?sort=true \
   | jq '.[0,1,2,3] | .name + " is open today from " + .todaysHours + " and tomorrow from " + .tomorrowsHours + "."' \
   >> hours.txt
 
-#sudo gtts-cli --file hours.txt --tld com -l en -o hours.mp3
 aws polly synthesize-speech --engine neural --output-format mp3 --voice-id Olivia --text file://hours.txt hours.mp3
 
 ### Mix and build final output
