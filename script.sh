@@ -14,7 +14,7 @@ for index in 0 1; do
     day=tomorrow
   fi
 
-  jq --argjson index $index --arg day $day '.wdw.daily.data[$index] | "The forecast for " + $day + " is " + (.summary|sub("[.]$";"")) + ". There will be a high of " + (.temperatureMax|floor|tostring) + " degrees Fahrenheit and a low of " + (.temperatureMin|floor|tostring) + "."' weather.json >> weather.txt
+  jq --argjson index $index --arg day $day '.daily.data[$index] | "The forecast for " + $day + " is " + (.summary|sub("[.]$";"")) + ". There will be a high of " + (.temperatureMax|floor|tostring) + " degrees Fahrenheit and a low of " + (.temperatureMin|floor|tostring) + "."' weather.json >> weather.txt
 done
 
 echo 'We hope you have a magical day, and a great big beautiful tomorrow!' >> weather.txt
